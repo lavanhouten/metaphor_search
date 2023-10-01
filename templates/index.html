@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="forms">
+    <form method="POST">
+        <input type="text" name="search" placeholder= "{{ mode }} search...">
+        <input type="hidden" name="mode" value="{{ mode }}">
+    </form>
+    <form method="POST">
+        <input type="submit" value="Switch Modes">
+        <input type="hidden" name="mode" value="{{ mode }}">
+        <input type="hidden" name="toggle_mode" value="true">
+    </form>
+    </div>
+{% for object in result.results %}
+    <div class="results">
+        <h2> <a href="{{ object.url }}" target="_blank"> {{ object.title }} </a> </h2>
+    </div>
+{% endfor %}
+</body>
+</html>
